@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "ClipNotes",
+  "version": "1.4",
+  "description": "Riassume in italiano, diviso in titoli, il video YouTube aperto. Con un click apre ChatGPT e invia il riassunto da solo.",
+  "permissions": ["activeTab", "clipboardWrite", "storage"],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "ClipNotes - Riassumi questo video",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/watch*"],
+      "js": ["content.js"]
+    },
+    {
+      "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*"],
+      "js": ["content_chatgpt.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+ClipNotes - Riassunti dei video YouTube con ChatGPT
+===================================================
+
+COS'E'
+ClipNotes e' un'estensione per Chrome. Quando guardi un video su YouTube,
+con un click legge la trascrizione, apre ChatGPT in una CHAT TEMPORANEA
+(non resta nella cronologia) e incolla + invia da solo la richiesta di
+riassunto. Il riassunto arriva in italiano, diviso in titoli con un breve
+paragrafo sotto ciascuno. E' gratis: usa il tuo account ChatGPT.
+
+Rete di sicurezza: il testo viene sempre copiato anche negli appunti. Quindi
+se per qualche motivo l'invio automatico non parte, ti basta cliccare nella
+casella di ChatGPT, fare Ctrl+V (incolla) e premere Invio.
+
+
+INSTALLAZIONE (si fa una volta sola, sono 5 passaggi)
+1. Apri Chrome e nella barra dell'indirizzo scrivi:  chrome://extensions
+   poi premi Invio.
+2. In alto a destra attiva l'interruttore "Modalita' sviluppatore".
+3. Clicca il pulsante "Carica estensione non pacchettizzata".
+4. Si apre una finestra: seleziona QUESTA cartella (la cartella ClipNotes)
+   e conferma.
+5. Comparira' l'icona di ClipNotes tra le estensioni. Per averla sempre a
+   portata di mano: clicca l'icona a forma di tessera del puzzle in alto a
+   destra in Chrome, poi clicca la puntina accanto a "ClipNotes".
+
+IMPORTANTE: la prima volta conviene avere ChatGPT gia' aperto e con l'accesso
+fatto (essere loggati su chatgpt.com), cosi' il riassunto puo' partire subito.
+
+
+COME SI USA
+1. Apri un video su YouTube e lascialo aperto.
+2. Clicca l'icona di ClipNotes in alto a destra.
+3. Scegli il TIPO di riassunto dal menu a tendina:
+   - Titoli + paragrafo (panoramica leggibile)
+   - Punti chiave (elenco)
+   - Schema di studio (per ripassare)
+   - TL;DR (ultra breve)
+   - Spiegazione semplice
+   - Domande e risposte
+   - Traduci tutto il testo (traduzione integrale in italiano, non riassunto)
+   Se vuoi, spunta anche "Aggiungi take-away finali" per chiudere con i
+   3-5 punti pratici da ricordare. L'estensione ricorda la tua ultima scelta.
+4. Clicca il pulsante "Riassumi questo video".
+5. Si apre ChatGPT in una scheda nuova (chat temporanea): il testo viene
+   incollato e inviato da solo. Aspetta la risposta.
+6. Se NON parte da solo (capita se ChatGPT era lento a caricare o non eri
+   loggato): clicca nella casella del messaggio, fai Ctrl+V e premi Invio.
+
+
+SE QUALCOSA NON FUNZIONA
+- "Ricarica la pagina del video": se hai appena installato l'estensione,
+  ricarica la pagina del video (tasto F5) e riprova. Capita solo la prima volta.
+- "Questo video non ha trascrizione disponibile": alcuni video non hanno
+  sottotitoli; in quel caso non c'e' niente da riassumere.
+- "Apri prima un video di YouTube": il pulsante funziona solo quando sei
+  sulla pagina di un video (indirizzo che contiene youtube.com/watch).
+- L'invio automatico non parte piu': ChatGPT ogni tanto cambia il suo sito e
+  il "robottino" va riadattato. Nel frattempo usa il Ctrl+V manuale (il testo
+  e' negli appunti). Avvisa e lo sistemo: e' una modifica di pochi minuti.
+
+
+NOTE
+- Per i video molto lunghi la trascrizione e' grande: ChatGPT la accetta lo
+  stesso, basta dargli qualche secondo in piu' per rispondere.
+- L'estensione non manda niente in giro per conto suo: estrae la trascrizione,
+  la mette negli appunti e la consegna a ChatGPT. Nient'altro.
