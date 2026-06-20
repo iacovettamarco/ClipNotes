@@ -173,19 +173,32 @@ function readTranscriptSegments() {
   return null;
 }
 
+// E' gia' aperto il pannello della trascrizione nella pagina?
+function isTranscriptPanelOpen() {
+  return !!document.querySelector(
+    "ytd-transcript-renderer, ytd-transcript-search-panel-renderer, ytd-transcript-segment-list-renderer"
+  );
+}
+
 async function getTranscriptFromDOM() {
+  // Se il pannello e' gia' aperto e leggibile, usalo subito.
   let text = readTranscriptSegments();
   if (text) return text;
 
-  const btn = findTranscriptButton();
-  if (btn) {
-    btn.click();
-    for (let i = 0; i < 25; i++) {
-      await sleep(300);
-      text = readTranscriptSegments();
-      if (text) return text;
-    }
+  // Apri il pannello SOLO se non e' gia' aperto: altrimenti cliccare il
+  // pulsante lo richiuderebbe, sabotando la lettura.
+  if (!isTranscriptPanelOpen()) {
+    const btn = findTranscriptButton();
+    if (btn) btn.click();
   }
+
+  // Aspetta che i segmenti compaiano (fino a ~7,5 secondi).
+  for (let i = 0; i < 25; i++) {
+    await sleep(300);
+    text = readTranscriptSegments();
+    if (text) return text;
+  }
+
   return null;
 }
 
