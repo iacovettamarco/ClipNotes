@@ -140,18 +140,37 @@ function findTranscriptButton() {
 }
 
 function readTranscriptSegments() {
+  // Strada principale: ogni riga della trascrizione e' un elemento dedicato.
   const segs = document.querySelectorAll("ytd-transcript-segment-renderer");
-  if (!segs.length) return null;
-  const out = [...segs]
-    .map((s) => {
-      const el = s.querySelector(".segment-text") || s.querySelector("yt-formatted-string") || s;
-      return (el.textContent || "").trim();
-    })
-    .filter(Boolean)
-    .join(" ")
-    .replace(/\s+/g, " ")
-    .trim();
-  return out || null;
+  if (segs.length) {
+    const out = [...segs]
+      .map((s) => {
+        const el = s.querySelector(".segment-text") || s.querySelector("yt-formatted-string") || s;
+        return (el.textContent || "").trim();
+      })
+      .filter(Boolean)
+      .join(" ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (out) return out;
+  }
+
+  // Riserva: YouTube ogni tanto rinomina gli elementi della trascrizione.
+  // Leggiamo allora direttamente i testi dei segmenti, qualunque sia il
+  // contenitore, prendendo solo le classi che contengono "segment-text"
+  // (cosi' evitiamo di catturare i marcatori dell'orario).
+  const textEls = document.querySelectorAll("[class*='segment-text']");
+  if (textEls.length) {
+    const out = [...textEls]
+      .map((el) => (el.textContent || "").trim())
+      .filter(Boolean)
+      .join(" ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (out) return out;
+  }
+
+  return null;
 }
 
 async function getTranscriptFromDOM() {
