@@ -170,7 +170,7 @@ function readTranscriptSegments() {
 // E' gia' aperto il pannello della trascrizione nella pagina?
 function isTranscriptPanelOpen() {
   return !!document.querySelector(
-    "ytd-transcript-renderer, ytd-transcript-search-panel-renderer, ytd-transcript-segment-list-renderer"
+    "transcript-segment-view-model, ytd-transcript-renderer, ytd-transcript-search-panel-renderer, ytd-transcript-segment-list-renderer"
   );
 }
 
