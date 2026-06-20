@@ -140,37 +140,31 @@ function findTranscriptButton() {
 }
 
 function readTranscriptSegments() {
-  // Strada principale: ogni riga della trascrizione e' un elemento dedicato.
-  const segs = document.querySelectorAll("ytd-transcript-segment-renderer");
-  if (segs.length) {
-    const out = [...segs]
-      .map((s) => {
-        const el = s.querySelector(".segment-text") || s.querySelector("yt-formatted-string") || s;
-        return (el.textContent || "").trim();
-      })
-      .filter(Boolean)
-      .join(" ")
-      .replace(/\s+/g, " ")
-      .trim();
-    if (out) return out;
-  }
+  // Due formati possibili:
+  //   - nuovo (2024+): <transcript-segment-view-model>, testo in uno
+  //     <span role="text">, orario in un div separato da scartare
+  //   - vecchio: <ytd-transcript-segment-renderer>, testo in .segment-text
+  const segs = document.querySelectorAll(
+    "transcript-segment-view-model, ytd-transcript-segment-renderer"
+  );
+  if (!segs.length) return null;
 
-  // Riserva: YouTube ogni tanto rinomina gli elementi della trascrizione.
-  // Leggiamo allora direttamente i testi dei segmenti, qualunque sia il
-  // contenitore, prendendo solo le classi che contengono "segment-text"
-  // (cosi' evitiamo di catturare i marcatori dell'orario).
-  const textEls = document.querySelectorAll("[class*='segment-text']");
-  if (textEls.length) {
-    const out = [...textEls]
-      .map((el) => (el.textContent || "").trim())
-      .filter(Boolean)
-      .join(" ")
-      .replace(/\s+/g, " ")
-      .trim();
-    if (out) return out;
-  }
+  const out = [...segs]
+    .map((s) => {
+      const el =
+        s.querySelector('span[role="text"]') ||
+        s.querySelector(".segment-text") ||
+        s.querySelector("yt-formatted-string");
+      // Se non troviamo l'elemento del testo, NON usiamo l'intero segmento
+      // (conterrebbe anche l'orario): meglio saltarlo.
+      return el ? (el.textContent || "").trim() : "";
+    })
+    .filter(Boolean)
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
 
-  return null;
+  return out || null;
 }
 
 // E' gia' aperto il pannello della trascrizione nella pagina?
