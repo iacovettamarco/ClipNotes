@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ClipNotes",
-  "version": "1.5",
+  "version": "1.6",
   "description": "Riassume in italiano, diviso in titoli, il video YouTube aperto. Con un click apre ChatGPT e invia il riassunto da solo.",
   "permissions": ["activeTab", "clipboardWrite", "storage"],
   "host_permissions": [

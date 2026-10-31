@@ -67,9 +67,12 @@ ${transcript}`;
 // Ripristina l'ultima scelta fatta, cosi' resta comoda tra un uso e l'altro.
 (async function restorePrefs() {
   try {
-    const saved = await chrome.storage.local.get(["clipnotes_style", "clipnotes_takeaway"]);
+    const saved = await chrome.storage.local.get(["clipnotes_style", "clipnotes_takeaway", "clipnotes_lang"]);
     if (saved.clipnotes_style && STYLES[saved.clipnotes_style]) {
       styleSel.value = saved.clipnotes_style;
+    }
+    if (saved.clipnotes_lang && LANGS[saved.clipnotes_lang]) {
+      langSel.value = saved.clipnotes_lang;
     }
     if (typeof saved.clipnotes_takeaway === "boolean") {
       takeawayChk.checked = saved.clipnotes_takeaway;
@@ -85,12 +88,14 @@ btn.addEventListener("click", async () => {
 
   const style = styleSel.value;
   const withTakeaway = takeawayChk.checked;
+  const lang = langSel.value;
 
   // Ricorda le preferenze per la prossima volta.
   try {
     await chrome.storage.local.set({
       clipnotes_style: style,
       clipnotes_takeaway: withTakeaway,
+      clipnotes_lang: lang,
     });
   } catch (e) {
     // non bloccante
@@ -119,7 +124,7 @@ btn.addEventListener("click", async () => {
     return;
   }
 
-  const prompt = buildPrompt(resp.title, resp.transcript, style, withTakeaway);
+  const prompt = buildPrompt(resp.title, resp.transcript, style, withTakeaway, lang);
 
   // Salva il prompt: il content script su ChatGPT lo legge, lo incolla e lo invia.
   try {
