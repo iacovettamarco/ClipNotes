@@ -130,6 +130,8 @@ function findTranscriptButton() {
   for (const b of candidates) {
     const label =
       ((b.getAttribute && (b.getAttribute("aria-label") || "")) + " " + (b.textContent || "")).toLowerCase();
+    // salta il pulsante "Chiudi trascrizione" del pannello
+    if (label.includes("chiudi") || label.includes("close")) continue;
     if (label.includes("trascrizion") || label.includes("transcript")) {
       if (b.tagName === "BUTTON") return b;
       const inner = b.querySelector && b.querySelector("button");
