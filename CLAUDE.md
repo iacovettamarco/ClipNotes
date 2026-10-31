@@ -22,6 +22,9 @@ per un `Ctrl+V` manuale.
   `buildPrompt`. Gli **stili** (titoli+paragrafo, punti chiave, schema di studio,
   TL;DR, spiegazione semplice, Q&A, traduzione integrale) e la spunta "take-away
   finali" (ignorata in traduzione) sono qui; la scelta è ricordata via storage.
+  **Lingua di uscita** (oggetto `LANGS`, 6 lingue, default = lingua del
+  browser): il prompt resta in italiano, cambia solo la lingua richiesta.
+  Il popup è in italiano; README in inglese per la SEO di GitHub.
 - `content_chatgpt.js` — content script su `chatgpt.com` che incolla e invia.
 - `manifest.json`, `popup.html`, `icons/`.
 

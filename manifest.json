@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "ClipNotes",
   "version": "1.6",
-  "description": "Riassume in italiano, diviso in titoli, il video YouTube aperto. Con un click apre ChatGPT e invia il riassunto da solo.",
+  "description": "Free YouTube video summarizer with ChatGPT: one click, no API key. Summaries in 6 languages and 7 styles.",
   "permissions": ["activeTab", "clipboardWrite", "storage"],
   "host_permissions": [
     "https://www.youtube.com/*",
