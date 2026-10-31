@@ -70,9 +70,19 @@
 </head>
 <body>
   <h1>ClipNotes</h1>
-  <p class="sub">Riassunto del video aperto, in italiano.</p>
+  <p class="sub">Riassunto del video aperto, nella lingua che scegli.</p>
 
-  <label class="field" for="style">Tipo di riassunto</label>
+  <label class="field" for="lang">Lingua / Language</label>
+  <select id="lang">
+    <option value="it">Italiano</option>
+    <option value="en">English</option>
+    <option value="es">Español</option>
+    <option value="fr">Français</option>
+    <option value="de">Deutsch</option>
+    <option value="pt">Português</option>
+  </select>
+
+  <label class="field" for="style" style="margin-top:12px">Tipo di riassunto</label>
   <select id="style">
     <option value="titoli">Titoli + paragrafo (panoramica)</option>
     <option value="punti">Punti chiave (elenco)</option>
