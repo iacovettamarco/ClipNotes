@@ -11,8 +11,13 @@ per un `Ctrl+V` manuale.
 
 ## File chiave
 - `content.js` — **estrazione trascrizione robusta**, tre metodi a cascata:
-  `json3` → XML → lettura del pannello "Mostra trascrizione" dal DOM (YouTube a
-  volte svuota le risposte `timedtext`).
+  `json3` → XML → lettura del pannello "Mostra trascrizione" dal DOM. Oggi
+  `timedtext` risponde vuoto (YouTube vuole un token anti-bot), quindi lavora
+  di fatto **solo il pannello**: il pulsante compare qualche secondo dopo il
+  caricamento, per questo lo script lo aspetta. I dati nello `<script>` della
+  pagina valgono solo se il `videoId` coincide con l'URL (dopo autoplay/cambio
+  video sono vecchi). Lo script è caricato su tutto `youtube.com/*` perché
+  YouTube cambia pagina senza ricaricare.
 - `popup.js` — costruzione prompt: oggetto `STYLES` + caso speciale `traduci` in
   `buildPrompt`. Gli **stili** (titoli+paragrafo, punti chiave, schema di studio,
   TL;DR, spiegazione semplice, Q&A, traduzione integrale) e la spunta "take-away
