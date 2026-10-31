@@ -41,10 +41,12 @@ const STYLES = {
 const TAKEAWAY =
   " Alla fine, aggiungi una sezione intitolata \"Take-away\" con i 3-5 punti piu' importanti da ricordare, in forma pratica e azionabile.";
 
-function buildPrompt(title, transcript, style, withTakeaway) {
+function buildPrompt(title, transcript, style, withTakeaway, lang) {
+  const lingua = LANGS[lang] || LANGS.it;
+
   // Caso speciale: traduzione integrale (non e' un riassunto).
   if (style === "traduci") {
-    return `Traduci in italiano il testo seguente, che e' la trascrizione di un video di YouTube. Traduci tutto, senza riassumere e senza tralasciare parti. Rendi il testo scorrevole e leggibile, mantenendo l'ordine originale. Se il testo e' gia' in italiano, limitati a sistemarne la punteggiatura e la leggibilita'.
+    return `Traduci in ${lingua} il testo seguente, che e' la trascrizione di un video di YouTube. Traduci tutto, senza riassumere e senza tralasciare parti. Rendi il testo scorrevole e leggibile, mantenendo l'ordine originale. Se il testo e' gia' in ${lingua}, limitati a sistemarne la punteggiatura e la leggibilita'.
 
 Titolo del video: ${title}
 
