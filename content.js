@@ -209,9 +209,25 @@ async function getTranscriptFromDOM() {
 
 // --- orchestrazione --------------------------------------------------------
 
+function currentVideoId() {
+  return new URLSearchParams(location.search).get("v");
+}
+
+function pageTitle() {
+  const h1 = document.querySelector("ytd-watch-metadata h1, h1.ytd-watch-metadata");
+  const t = (h1 && h1.textContent.trim()) || document.title.replace(/ - YouTube$/, "");
+  return t.trim();
+}
+
 async function getTranscript() {
-  const player = extractPlayerResponse();
-  const title = (player && player.videoDetails && player.videoDetails.title) || document.title;
+  // I dati nello <script> della pagina restano quelli del PRIMO video caricato:
+  // se nel frattempo si e' passati a un altro video (autoplay, click su un
+  // suggerito) sono vecchi e vanno ignorati.
+  let player = extractPlayerResponse();
+  if (!player || !player.videoDetails || player.videoDetails.videoId !== currentVideoId()) {
+    player = null;
+  }
+  const title = (player && player.videoDetails.title) || pageTitle();
 
   let transcript = null;
 
