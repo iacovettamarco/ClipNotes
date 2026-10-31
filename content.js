@@ -123,7 +123,19 @@ async function fetchCaption(baseUrl) {
 
 // --- terza strada: leggere il pannello "Mostra trascrizione" ---------------
 
+// Parole che indicano "trascrizione" nelle lingue principali di YouTube.
+const TRANSCRIPT_WORDS = ["trascrizion", "transcript", "transcrip", "transkript", "transcrição", "transcricao"];
+const CLOSE_WORDS = ["chiudi", "close", "cerrar", "fermer", "schließen", "fechar"];
+
 function findTranscriptButton() {
+  // Metodo principale, uguale in tutte le lingue: il pulsante dentro la
+  // sezione "Trascrizione" della descrizione del video.
+  const direct = document.querySelector(
+    "ytd-video-description-transcript-section-renderer button"
+  );
+  if (direct) return direct;
+
+  // Ripiego: cerca per testo.
   const candidates = document.querySelectorAll(
     "button, tp-yt-paper-button, ytd-button-renderer, yt-button-shape, [role='button']"
   );
