@@ -183,8 +183,17 @@ async function getTranscriptFromDOM() {
 
   // Apri il pannello SOLO se non e' gia' aperto: altrimenti cliccare il
   // pulsante lo richiuderebbe, sabotando la lettura.
+  // Il pulsante "Mostra trascrizione" compare qualche secondo DOPO il
+  // caricamento del video: se non c'e' ancora, aspettalo (fino a ~10 secondi)
+  // invece di arrendersi subito.
   if (!isTranscriptPanelOpen()) {
-    const btn = findTranscriptButton();
+    let btn = findTranscriptButton();
+    for (let i = 0; !btn && i < 33; i++) {
+      await sleep(300);
+      text = readTranscriptSegments();
+      if (text) return text;
+      btn = findTranscriptButton();
+    }
     if (btn) btn.click();
   }
 
