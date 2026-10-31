@@ -2,6 +2,21 @@ const btn = document.getElementById("go");
 const statusEl = document.getElementById("status");
 const styleSel = document.getElementById("style");
 const takeawayChk = document.getElementById("takeaway");
+const langSel = document.getElementById("lang");
+
+// Lingua in cui ChatGPT deve scrivere il risultato.
+const LANGS = {
+  it: "italiano",
+  en: "inglese (English)",
+  es: "spagnolo (español)",
+  fr: "francese (français)",
+  de: "tedesco (Deutsch)",
+  pt: "portoghese (português)",
+};
+
+// Default: la lingua del browser, se e' tra quelle disponibili; altrimenti inglese.
+const browserLang = (chrome.i18n.getUILanguage() || "en").slice(0, 2);
+langSel.value = LANGS[browserLang] ? browserLang : "en";
 
 function setStatus(text) {
   statusEl.textContent = text;
