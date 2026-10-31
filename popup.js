@@ -56,7 +56,7 @@ ${transcript}`;
 
   const instr = STYLES[style] || STYLES.titoli;
   const extra = withTakeaway ? TAKEAWAY : "";
-  return `Riassumi questo video di YouTube in italiano. ${instr} Mantieni l'ordine degli argomenti trattati nel video.${extra}
+  return `Riassumi questo video di YouTube. Scrivi tutta la risposta in ${lingua}, anche i titoli delle sezioni. ${instr} Mantieni l'ordine degli argomenti trattati nel video.${extra}
 
 Titolo del video: ${title}
 
