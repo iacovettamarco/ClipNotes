@@ -56,7 +56,3 @@ YouTube and ChatGPT change their pages often. If something breaks, open an issue
 Mentre guardi un video clicchi l'icona: ClipNotes legge la trascrizione, apre ChatGPT in chat temporanea e invia da solo la richiesta di riassunto, nella lingua che scegli e nello stile che preferisci (titoli + paragrafo, punti chiave, schema di studio, TL;DR, spiegazione semplice, domande e risposte, traduzione integrale).
 
 Installazione: vedi [`ISTRUZIONI.txt`](ISTRUZIONI.txt) (in breve: `chrome://extensions` → Modalità sviluppatore → Carica estensione non pacchettizzata).
-
-## License
-
-Free to use and modify.
