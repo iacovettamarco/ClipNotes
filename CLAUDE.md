@@ -32,5 +32,7 @@ panoramica in [`README.md`](README.md).
 
 ## Manutenzione
 Se ChatGPT o YouTube cambiano il DOM, ritoccare `content_chatgpt.js` (auto-invio)
-o `content.js` (estrazione). Il repo GitHub è **privato** e ha un hook che fa
+o `content.js` (estrazione). Il repo GitHub è **pubblico**
+(github.com/iacovettamarco/ClipNotes: niente segreti nei file, mai aggiungerne)
+e ha un hook che fa
 commit+push automatico a ogni modifica di un file ClipNotes.
